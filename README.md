@@ -1,2 +1,1 @@
-# KarateDemo
-Karate-BDD-Httpbin
+mvn test -DargLine="-Dkarate.env=dev"
