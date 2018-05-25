@@ -29,3 +29,10 @@ Feature: test httpbin /get behaviour
     Then status 200
     And print response
     And match response.args == {name:'Sherlock',occupation:'detective'}
+  
+  Scenario: get with reuseable feature
+    Given def testdata =  {name:'Tony Stark',knownAs:'Iron man'}
+    And def inputdata = {'params':''}
+    And set inputdata.params = testdata
+    When def getService = call read('classpath:reusable/httpbinGetService.feature') inputdata
+    Then match getService.getResponse.args == testdata
