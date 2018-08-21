@@ -9,6 +9,10 @@ function() {
 	myVarName: 'someValue',
 	baseUrl: 'http://httpbin.org'
   }
+  
+  config = karate.callSingle('classpath:Utility.js',config);
+  config = karate.callSingle('classpath:HttpbinService.js',config);
+  
   if (env == 'dev') {
     // customize
     // e.g. config.foo = 'bar';

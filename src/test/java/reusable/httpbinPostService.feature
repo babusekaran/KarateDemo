@@ -2,15 +2,16 @@
 #Keywords Summary : Feature to test httpbin /get behaviour
 
 @tag
-Feature: test httpbin /get behaviour 
+Feature: test httpbin /post behaviour 
 
 	Background: Default needs to load for every scenario
 		* url baseUrl
-		* def inputData = {params:'#(params)'}
+		* def inputData = {params:'#(params)',payload:'#(payload)'}
 
   Scenario: get with with given params
-    Given path "/get"
+    Given path "/post"
     And params inputData.params
-    When method get
+    And request inputData.payload
+    When method post
     Then status 200
   
