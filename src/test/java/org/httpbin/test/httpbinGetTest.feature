@@ -1,11 +1,26 @@
 #Author: Babu Sekaran
 #Keywords Summary : Feature to test httpbin /get behaviour
 
-@tag
+@parallel=false
 Feature: test httpbin /get behaviour 
 
 	Background: Default needs to load for every scenario
 		* url baseUrl
+
+	Scenario Outline: test <paramValue>
+	* path '/get'
+		Given params { <paramName>: <paramValue> }
+	 When method get
+	 Then status 200
+	 Examples:
+	   | paramName | paramValue |                                                                                                                                                                                                                                                 
+	   | 'Hybrid'       |  'BMW' |
+	   | 'EMV'       |  'test data'|
+	   
+	Scenario: Get call with param in URL
+	* url 'http://httpbin.org/get?Name=Volvo'
+	 When method get
+	 Then status 200
 
   Scenario: get with no params
     Given path "/get"
@@ -32,9 +47,10 @@ Feature: test httpbin /get behaviour
   
   Scenario: get with reuseable feature
     Given def testdata =  {name:'Tony Stark',knownAs:'Iron man'}
-    And def inputdata = {'params':''}
-    And set inputdata.params = testdata
-    When def getService = call read('classpath:reusable/httpbinGetService.feature') inputdata
+    And def inputdata = {'params':'#(testdata)'}
+    * def inputDataArray = [{ "params": {"name": "Tony Stark","knownAs": "Iron man"}},{ "params": {"name": "Bruce Wayne","knownAs": "Bat man"}}]
+    When def getService = call HttpBin.getService inputdata
+    * print getService
     Then match getService.response.args == testdata
     
     

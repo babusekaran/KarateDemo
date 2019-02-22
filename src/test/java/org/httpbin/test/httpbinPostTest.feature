@@ -1,13 +1,23 @@
 #Author: Babu Sekaran
 #Keywords Summary : Feature to test httpbin /post behaviour
 
-@tag
+@parallel=false
 Feature: test httpbin /post behaviour 
 
 	Background: Default needs to load for every scenario
 		* url baseUrl
 
-  Scenario: get with no params
+  Scenario: Post
+    Given path "/post"
+    And request {name:'Sherlock',occupation:'detective'}
+    * configure retry = {count: 2, interval: 3000}
+    When method post
+    Then status 200
+    And print response
+    And match response.args == {}
+    * retry until response.data == '{"name":"Peru therla","occupation":"Captain marvel"}'
+    
+  Scenario: Post
     Given path "/post"
     And request {name:'Sherlock',occupation:'detective'}
     When method post
@@ -16,7 +26,7 @@ Feature: test httpbin /post behaviour
     And match response.args == {}
     And match response.data == '{"name":"Sherlock","occupation":"detective"}'
   
-  Scenario Outline: Post with reuseable feature , examples with js
+  Scenario Outline: Avenger name : <name> - Post with reuseable feature , examples with js 
     Given def inputParams =  {}
     * set inputParams.name = <name>
     * set inputParams.day = <day>

@@ -6,18 +6,18 @@ function() {
   }
   var config = {
     env: env,
-	myVarName: 'someValue',
 	baseUrl: 'http://httpbin.org'
   }
+  config = karate.callSingle('classpath:reusable/js/Utility.js',config);
+  config = karate.callSingle('classpath:reusable/js/HttpbinService.js',config);
   
-  config = karate.callSingle('classpath:Utility.js',config);
-  config = karate.callSingle('classpath:HttpbinService.js',config);
+  config["JavaUtils"] = Java.type("reusable.java.JavaUtils")
   
   if (env == 'dev') {
-    // customize
-    // e.g. config.foo = 'bar';
+    karate.log("karate test in dev environment");
+    config["AuthCode"] = karate.callSingle("classpath:reusable/feature/demoAuth.feature").authToken;
   } else if (env == 'e2e') {
-    // customize
+	  karate.log("karate test in e2e environment");
   }
   return config;
 }
