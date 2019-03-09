@@ -1,1 +1,1 @@
-mvn test -DargLine="-Dkarate.env=dev"
+mvn clean test -Dtest=HttpBinTest
