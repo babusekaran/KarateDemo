@@ -31,6 +31,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-ui</artifactId>
+            <version>${karate.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
     		<groupId>net.masterthought</groupId>
     		<artifactId>cucumber-reporting</artifactId>
     		<version>${cucumber.reporting}</version>

@@ -1,7 +1,6 @@
 Feature: Appium Karate Demo
 
   Background: App Preset
-    * configure
     * configure driver = { type: 'android' }
     * def driverCaps = {"app": "Calculator.apk", "newCommandTimeout": 180, "platformVersion": "8.1.0", "platformName": "Android","connectHardwareKeyboard": true, "deviceName": "emulator-5554", "avd": "Pixel_OREO_27_BS"}
 
