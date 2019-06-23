@@ -11,10 +11,5 @@ import org.junit.runner.RunWith;
 @RunWith(Karate.class)
 public class CalcRunner {
 
-    @BeforeClass
-    public static void beforeClass() {
-        System.setProperty("karate.env", "mock");
-    }
-
 }
 

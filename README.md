@@ -11,8 +11,8 @@ Appium: Install appium from npm
 
 Android:  (would need approx 2GiB of network data)
 
-Download and Install Android Studio for mac : https://developer.android.com/studio#downloads
-Setup ANDROID_HOME in environment variables 
+Download and Install Android Studio for mac : https://developer.android.com/studio#downloads<br>
+Setup `ANDROID_HOME` in environment variables 
 you should be able to run CLI commands like `sdkmanager`, `emulator`, `avdmanager`
 
 `sdkmanager --update` <br>
@@ -25,7 +25,7 @@ you should be able to run CLI commands like `sdkmanager`, `emulator`, `avdmanage
 iOS: (would need approx 6GiB of network data)<br>
 
 Download and install xcode 9 or above from https://developer.apple.com/download/ <br>
-need a apple developer id you can use you appleid for this.<br>
+need a apple developer id you can use your apple id for this.<br>
 
 `xcrun simctl list device`<br>
 `appium-doctor`
