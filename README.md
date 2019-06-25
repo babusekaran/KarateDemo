@@ -21,6 +21,8 @@ you should be able to run CLI commands like `sdkmanager`, `emulator`, `avdmanage
 `avdmanager create avd -n <AVD_NAME> -k "system-images;android-27;default;x86_64" -g "default"`<br>
 `emulator -list-avds`<br>
 `appium-doctor`<br>
+`emulator -avd <AVD_NAME>`(to launch avd in emulator)<br>
+`emulator -avd <AVD_NAME> -no-snapshot-load`(to launch avd in emulator with *cold boot*)<br>
 
 iOS: (would need approx 6GiB of network data)<br>
 
