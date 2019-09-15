@@ -7,11 +7,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.intuit.karate.Results;
+import com.intuit.karate.Runner;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-
-import com.intuit.karate.cucumber.CucumberRunner;
-import com.intuit.karate.cucumber.KarateStats;
 
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
@@ -22,9 +21,9 @@ public class HttpBinTest {
 	@Test
 	public void karateTestParallel() {
 		String karateOutputPath = "target/surefire-reports";
-		KarateStats stats = CucumberRunner.parallel(getClass(), 5, karateOutputPath);
+		Results results = Runner.parallel(getClass(), 5, karateOutputPath);
 		generateKarateReport(karateOutputPath);
-		assertTrue("there are scenario failures", stats.getFailCount() == 0);        
+		assertTrue("there are scenario failures", results.getFailCount() == 0);
 	}
 
 	private static void generateKarateReport(String karateOutputPath) {

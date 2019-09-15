@@ -16,10 +16,11 @@ Feature: Appium Karate Demo
 
   Scenario: Calculator
     Given driver driverCaps
-    * def deviceInfo = driver.eval("mobile:deviceInfo")
+    * driver.startRecordingScreen()
     And driver.click('#org.tadaedo.calc:id/btn_1')
     And driver.click('#org.tadaedo.calc:id/btn_puls')
     And driver.click('#org.tadaedo.calc:id/btn_7')
     When driver.click('#org.tadaedo.calc:id/btn_equa')
     Then match driver.text('#org.tadaedo.calc:id/text') contains '8'
     And driver.click('#org.tadaedo.calc:id/btn_clear')
+    * driver.saveRecordingScreen("calc.mp4",true)
