@@ -1,8 +1,8 @@
-***For API tests:***
+## For API tests:
 
 `mvn clean test -Dtest=HttpBinTest`
 
-***For Mobile Automation:***
+## For Mobile Automation:
 
 Appium: Install appium from npm
 
